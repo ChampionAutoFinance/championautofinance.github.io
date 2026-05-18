@@ -1,0 +1,248 @@
+/*
+Theme Name: LeadEngine Child
+Template: leadengine
+Theme URI: https://www.leadengine-wp.com/
+Author: Key-Design
+Author URI: http://themeforest.net/user/Key-Design
+Description: Multi-Purpose WordPress Theme with Page Builder
+Version: 1.0
+Tags: one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar, custom-menu, featured-images, flexible-header, post-formats, sticky-post, translation-ready
+
+/* Below you can write your style */
+
+ /* Move reCAPTCHA v3 badge in front */
+.grecaptcha-badge {
+z-index:999 !important;
+}
+
+.menubar {
+    padding: 10px 0px;
+}
+
+.vc_row.vc_row-has-fill {
+	background-position: right top !important;
+	margin-top: -10px !important;
+}
+
+
+@media (min-width: 768px) and (max-width: 959px) {
+	#shield_main img {
+		width: 70%;
+		height: auto;
+	}
+	
+	#aboutus_main img {
+		width: 60%;
+		height: auto;
+		margin-top: 70px !important;
+		margin-bottom: 0px !important;
+	}
+	
+	/* .vc_row.vc_row-has-fill {
+		margin-top: 30px !important;
+	} */
+	
+	.extra_margin_top {
+		margin-top: 50px !important;		
+	}
+}
+
+@media (max-width: 767px) {
+	.vc_row.vc_row-has-fill {
+		margin-top: -10px !important;
+	}	
+	#shield_main img {
+		display: none !important;
+	}	
+	#placeholder_main img {
+		width: 70%;
+		height: auto;
+	}	
+}
+
+@media (min-width: 768px) {
+  #placeholder_main img {
+    display: none !important;
+  }
+}
+
+@media (max-width: 959px) {
+  .logo img {
+    max-height: none !important;
+    height: auto !important;
+  }
+}
+
+#input_1_3 + .ginput_counter {
+  display: none !important;
+}
+
+/* Border line under the menu/header */
+nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo {
+  border-bottom: 2px solid transparent !important;
+  border-image: linear-gradient(
+    to right,
+    rgba(126, 166, 214, 0.12) 0%,
+    rgba(126, 166, 214, 0.28) 15%,
+    rgba(126, 166, 214, 0.75) 50%,
+    rgba(126, 166, 214, 0.28) 85%,
+    rgba(126, 166, 214, 0.12) 100%
+  ) 1 !important;
+}
+
+
+
+.title_semibold h2 {
+  font-weight: 600 !important;
+}
+
+.hero-checks-desktop {
+  padding-top: 80px !important;
+}	
+
+@media (max-width: 959px) {
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo,
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .menubar,
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .container,
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .navbar-collapse {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .navbar-collapse.in,
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .navbar-collapse.collapsing {
+    background: rgba(8, 18, 34, 0.96) !important;
+    background-color: rgba(8, 18, 34, 0.96) !important;
+  }
+
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .navbar-nav > li > a {
+    color: #ffffff !important;
+  }
+
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .navbar-toggle {
+    background: transparent !important;
+    border-color: rgba(126, 166, 214, 0.45) !important;
+  }
+
+  nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo .navbar-toggle .icon-bar {
+    background-color: #ffffff !important;
+  }
+	
+  .extra_margin_top.wpb_column.vc_column_container.vc_col-sm-12.vc_col-has-fill {
+	margin-top: 140px !important;
+  }	
+	
+  .hero-checks-desktop {
+	padding-top: 0px !important;
+	display: none !important;
+  }	
+	
+	/* Dealer Partner Page Adjustments */
+	body #single-page.dealer-partners {
+	  margin-bottom: -40px !important;
+	}
+	body #single-page.dealer-partners .kd-section-title {
+	  padding-top: 80px !important;
+	}
+	body #single-page.dealer-partners .vc_single_image-img {
+	  padding-top: 80px !important;
+	}	
+	
+	/* Contact Us Page Adjustments */	
+	body #single-page.contact-us {
+	  margin-bottom: -40px !important;
+	}
+	body #single-page.contact-us .kd-section-title {
+	  padding-top: 80px !important;
+	}	
+	body #single-page.contact-us .vc_single_image-img {
+	  padding-top: 80px !important;
+	}
+	
+	/* Home Page Adjustments */	
+	body #home .home_page_style {
+	  margin-bottom: -40px !important;
+	}	
+	
+}
+
+
+/* BEGIN - Header Menu */
+	/* Default menu links */
+	nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo
+	#menu-main-menu.nav.navbar-nav > li > a{
+	  color:#ffffff !important;
+	}
+
+	/* Hover / focus */
+	nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo
+	#menu-main-menu.nav.navbar-nav > li > a:hover,
+	nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo
+	#menu-main-menu.nav.navbar-nav > li > a:focus{
+	  color:#7EA6D6 !important;
+	}
+
+	/* Active / current page */
+	nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo
+	#menu-main-menu.nav.navbar-nav > li.active > a,
+	nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo
+	#menu-main-menu.nav.navbar-nav > li.current-menu-item > a,
+	nav.navbar.navbar-default.navbar-fixed-top.fixed-menu.no-topbar.nav-transparent-secondary-logo
+	#menu-main-menu.nav.navbar-nav > li.current_page_item > a{
+	  color:#9CC4F0 !important;
+	}
+/* END - Header Menu */
+
+@media (max-width: 767px) {
+  .inner_page_custom .vc_inner.vc_row-fluid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .inner_page_custom .vc_inner.vc_row-fluid > .vc_col-sm-6 {
+    order: 1 !important;
+  }
+
+  .inner_page_custom .vc_inner.vc_row-fluid > .vc_col-sm-5 {
+    order: 2 !important;
+  }
+
+  .inner_page_custom .vc_inner.vc_row-fluid > .vc_col-sm-1 {
+    order: 3 !important;
+  }
+	
+  #aboutus_main {
+    text-align: center !important;
+    margin-top: -50px !important;
+    margin-bottom: -70px !important;
+  }
+
+  #aboutus_main img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+    height: auto;
+  }
+	
+}
+
+/* About Us page numbered description text size */
+.pss-text-area p {
+	font-size: 16px !important;
+}
+
+@media (min-width: 768px) and (max-width: 959px) {
+  body.home,
+  body.home #wrapper,
+  body.home #primary,
+  body.home #main,
+  body.home #home,
+  body.home #home .container,
+  body.home #home .row,
+  body.home #home .wpb-content-wrapper,
+  body.home .vc_row-full-width.vc_clearfix {
+    background-color: #040926 !important;
+  }
+}
