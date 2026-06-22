@@ -1,63 +1,68 @@
 (() => {
-  const menuToggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('siteNav');
-  const progressBar = document.getElementById('progressBar');
-  const yearLabel = document.getElementById('year');
+  const navToggle = document.getElementById('menuToggle');
+  const primaryNav = document.getElementById('primaryMenu');
+  const readProgress = document.getElementById('readProgress');
   const leadForm = document.getElementById('leadForm');
   const formNote = document.getElementById('formNote');
-  const heroTitle = document.getElementById('heroTitle');
-  const storyCards = Array.from(document.querySelectorAll('.story'));
-  const counters = Array.from(document.querySelectorAll('[data-count]'));
-  const revealItems = Array.from(document.querySelectorAll('.reveal'));
+  const heroHeadline = document.getElementById('heroHeadline');
+  const backToTop = document.getElementById('backToTop');
+  const yearNode = document.getElementById('year');
+  const revealTargets = Array.from(document.querySelectorAll('.reveal'));
+  const countNodes = Array.from(document.querySelectorAll('[data-count]'));
 
-  const heroPhrases = [
-    'Confidence in every Mile',
-    'Clear underwriting direction',
-    'Built for dealer velocity',
-    'Execution without surprises'
+  const headlineSequence = [
+    'Fast approvals. Compliant execution. Predictable outcomes.',
+    'High-signal underwriting guidance at every turn.',
+    'Dealer workflows engineered for real speed.',
+    'Institutional-grade process, startup velocity.'
   ];
 
-  if (menuToggle && nav) {
-    menuToggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('is-open');
-      menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+  const safeNum = (value) => Number(String(value || '').replace(/[^0-9.-]/g, '') || 0);
 
-    nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('is-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
+  const toggleNav = () => {
+    if (!navToggle || !primaryNav) return;
+    const isOpen = primaryNav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  };
+
+  if (navToggle) {
+    navToggle.addEventListener('click', toggleNav);
+    primaryNav.querySelectorAll('a').forEach((anchor) => {
+      anchor.addEventListener('click', () => {
+        primaryNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
-  if (heroTitle) {
-    let active = 0;
+  const cycleHeadline = () => {
+    if (!heroHeadline) return;
+    let index = 0;
     setInterval(() => {
-      active = (active + 1) % heroPhrases.length;
-      heroTitle.style.opacity = '0';
-      heroTitle.style.transform = 'translateY(12px)';
+      index = (index + 1) % headlineSequence.length;
+      heroHeadline.style.opacity = '0';
+      heroHeadline.style.transform = 'translateY(10px)';
       setTimeout(() => {
-        heroTitle.textContent = heroPhrases[active];
-        heroTitle.style.opacity = '1';
-        heroTitle.style.transform = 'translateY(0)';
-      }, 200);
-    }, 3200);
-  }
+        heroHeadline.textContent = headlineSequence[index];
+        heroHeadline.style.opacity = '1';
+        heroHeadline.style.transform = 'translateY(0)';
+      }, 220);
+    }, 3600);
+  };
 
-  const reveal = () => {
+  const revealSections = () => {
     if (!('IntersectionObserver' in window)) {
-      revealItems.forEach((el) => el.classList.add('is-visible'));
+      revealTargets.forEach((el) => el.classList.add('is-visible'));
       return;
     }
 
     const observer = new IntersectionObserver(
-      (entries, observerRef) => {
+      (entries, io) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          const delay = Number(entry.target.style.getPropertyValue('--delay').replace('ms', '')) || 0;
+          const delay = safeNum(entry.target.style.getPropertyValue('--delay'));
           setTimeout(() => entry.target.classList.add('is-visible'), delay);
-          observerRef.unobserve(entry.target);
+          io.unobserve(entry.target);
         });
       },
       {
@@ -65,108 +70,118 @@
       }
     );
 
-    revealItems.forEach((item) => observer.observe(item));
+    revealTargets.forEach((target) => observer.observe(target));
   };
 
   const animateCounters = () => {
-    if (!counters.length) return;
+    if (!countNodes.length) return;
     if (!('IntersectionObserver' in window)) {
-      counters.forEach((counter) => {
-        counter.textContent = counter.dataset.count;
+      countNodes.forEach((node) => {
+        node.textContent = safeNum(node.dataset.count).toLocaleString();
       });
       return;
     }
 
-    const countObserver = new IntersectionObserver(
-      (entries, obs) => {
+    const counterObserver = new IntersectionObserver(
+      (entries, io) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          const counter = entry.target;
-          const target = Number(counter.dataset.count || '0');
-          const duration = 1200;
+          const node = entry.target;
+          const targetValue = safeNum(node.dataset.count);
           const start = performance.now();
-          const from = 0;
+          const duration = 1300;
+          const startValue = 0;
 
-          const tick = (time) => {
+          const update = (time) => {
             const progress = Math.min((time - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            counter.textContent = Math.round(from + (target - from) * eased).toLocaleString();
-            if (progress < 1) {
-              requestAnimationFrame(tick);
-            }
+            node.textContent = Math.round(startValue + (targetValue - startValue) * eased).toLocaleString();
+            if (progress < 1) requestAnimationFrame(update);
           };
 
-          requestAnimationFrame(tick);
-          obs.unobserve(counter);
+          requestAnimationFrame(update);
+          io.unobserve(node);
         });
       },
-      { threshold: 0.8 }
+      { threshold: 0.7 }
     );
 
-    counters.forEach((counter) => countObserver.observe(counter));
+    countNodes.forEach((node) => counterObserver.observe(node));
   };
 
-  const rotateStories = () => {
-    if (!storyCards.length) return;
-    let index = 0;
-    storyCards[0].classList.add('is-active');
-
-    setInterval(() => {
-      const current = storyCards[index];
-      current.classList.remove('is-active');
-      index = (index + 1) % storyCards.length;
-      const next = storyCards[index];
-      next.classList.add('is-active');
-    }, 4500);
+  const bindProgressBar = () => {
+    const update = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const value = max > 0 ? (window.scrollY / max) * 100 : 0;
+      if (readProgress) readProgress.style.width = `${Math.min(value, 100)}%`;
+      if (backToTop) {
+        if (window.scrollY > 420) {
+          backToTop.classList.add('is-visible');
+        } else {
+          backToTop.classList.remove('is-visible');
+        }
+      }
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
   };
 
-  const scrollBar = () => {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    const value = max > 0 ? (window.scrollY / max) * 100 : 0;
-    if (progressBar) progressBar.style.width = `${Math.min(value, 100)}%`;
+  const bindBackToTop = () => {
+    if (!backToTop) return;
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   };
 
-  const year = () => {
-    if (yearLabel) yearLabel.textContent = new Date().getFullYear().toString();
-  };
-
-  if (leadForm) {
+  const bindForm = () => {
+    if (!leadForm) return;
     leadForm.addEventListener('submit', (event) => {
       event.preventDefault();
       const formData = Object.fromEntries(new FormData(leadForm));
-      const email = String(formData.email || '').trim();
       const name = String(formData.name || '').trim();
+      const email = String(formData.email || '').trim();
       const message = String(formData.message || '').trim();
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-      if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        if (formNote) formNote.textContent = 'Please fill in all fields with a valid email.';
+      if (!name || !message || !isEmail) {
+        if (formNote) {
+          formNote.textContent = 'Please fill all fields with a valid email.';
+        }
         return;
       }
 
-      if (formNote) formNote.textContent = `${name.split(' ')[0]}, your inquiry has been queued.`;
+      if (formNote) {
+        formNote.textContent = `${name.split(' ')[0]}, your request is in queue.`;
+      }
       leadForm.reset();
     });
-  }
+  };
 
-  let mouseX = 0;
-  let mouseY = 0;
-  document.addEventListener('pointermove', (event) => {
-    mouseX = event.clientX / window.innerWidth;
-    mouseY = event.clientY / window.innerHeight;
+  const addAmbientMotion = () => {
+    const ambientOne = document.querySelector('.ambient--one');
+    const ambientTwo = document.querySelector('.ambient--two');
+    if (!ambientOne || !ambientTwo || !('ontouchstart' in window)) return;
 
-    const orbs = document.querySelectorAll('.bg-orb');
-    orbs.forEach((orb, index) => {
-      const x = (index === 0 ? -1 : 1) * (mouseX - 0.5) * 12;
-      const y = (index === 0 ? -1 : 1) * (mouseY - 0.5) * 16;
-      orb.style.transform = `translate(${x}px, ${y}px)`;
+    document.addEventListener('pointermove', (event) => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 16;
+      const y = (event.clientY / window.innerHeight - 0.5) * 10;
+      ambientOne.style.transform = `translate(${x * -1}px, ${y * -0.8}px)`;
+      ambientTwo.style.transform = `translate(${x * 0.9}px, ${y * -0.5}px)`;
     });
-  });
+  };
+
+  const year = () => {
+    if (yearNode) yearNode.textContent = new Date().getFullYear();
+  };
 
   year();
-  reveal();
+  revealSections();
   animateCounters();
-  rotateStories();
-  scrollBar();
-  window.addEventListener('scroll', scrollBar, { passive: true });
+  cycleHeadline();
+  bindProgressBar();
+  bindBackToTop();
+  bindForm();
+  addAmbientMotion();
 })();
