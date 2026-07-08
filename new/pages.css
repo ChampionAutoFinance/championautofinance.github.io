@@ -160,6 +160,12 @@
   font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; transition: gap 0.3s var(--ease); }
 .learn:hover { gap: 0.75rem; }
 
+/* ---------- Footer phone ---------- */
+.footer__phone { margin-top: 0.9rem; }
+.footer__phone a { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--blue-soft);
+  font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
+.footer__phone a:hover { color: var(--ink); }
+
 /* ---------- Section soft band ---------- */
 .section--band { max-width: none; background: rgba(6,19,39,0.4); border-block: 1px solid var(--line); }
 .section--band > * { max-width: var(--max); margin-inline: auto; }
