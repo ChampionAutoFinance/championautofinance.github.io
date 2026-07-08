@@ -165,6 +165,10 @@
 .footer__phone a { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--blue-soft);
   font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
 .footer__phone a:hover { color: var(--ink); }
+.footer__email { margin-top: 0.35rem; }
+.footer__email a { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink-dim);
+  font-weight: 500; font-size: 0.98rem; transition: color 0.3s; }
+.footer__email a:hover { color: var(--blue-soft); }
 
 /* ---------- Section soft band ---------- */
 .section--band { max-width: none; background: rgba(6,19,39,0.4); border-block: 1px solid var(--line); }
