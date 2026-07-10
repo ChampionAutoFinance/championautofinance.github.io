@@ -1,0 +1,266 @@
+/* Champion Auto Finance — plain "government" style. Black & white, no frills. */
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+a { color: #00339c; }
+a:hover { color: #002266; }
+
+h1, h2, h3, h4 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #000;
+  line-height: 1.25;
+  margin: 0 0 .5em;
+}
+
+h1 { font-size: 1.9rem; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1em; }
+
+/* ---- Official banner ---- */
+.usa-banner {
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  font-size: .8rem;
+  color: #333;
+}
+.usa-banner__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6px 16px;
+}
+
+/* ---- Masthead ---- */
+.masthead {
+  border-bottom: 4px solid #000;
+  background: #fff;
+}
+.masthead__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.masthead__seal {
+  width: 54px;
+  height: 54px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 1.4rem;
+  flex: 0 0 auto;
+}
+.masthead__title { margin: 0; font-size: 1.5rem; }
+.masthead__title small {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: .78rem;
+  font-weight: normal;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #444;
+}
+.masthead__contact {
+  margin-left: auto;
+  text-align: right;
+  font-size: .85rem;
+  color: #333;
+}
+.masthead__contact a { text-decoration: none; }
+
+/* ---- Nav ---- */
+.gov-nav {
+  background: #1b1b1b;
+  border-bottom: 1px solid #000;
+}
+.gov-nav__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.gov-nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 16px;
+  font-size: .92rem;
+  border-right: 1px solid #3a3a3a;
+}
+.gov-nav a:hover { background: #333; color: #fff; }
+.gov-nav a[aria-current="page"] { background: #fff; color: #000; font-weight: bold; }
+
+/* ---- Layout ---- */
+.wrap { max-width: 1000px; margin: 0 auto; padding: 28px 16px 48px; }
+
+.pageheader {
+  border-bottom: 1px solid #999;
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+}
+.pageheader p { margin: 0; color: #444; }
+
+.breadcrumb { font-size: .82rem; color: #555; margin-bottom: 14px; }
+.breadcrumb a { text-decoration: none; }
+
+section.block { margin: 0 0 34px; }
+
+/* ---- Notice box ---- */
+.notice {
+  border: 1px solid #999;
+  border-left: 6px solid #000;
+  background: #f7f7f7;
+  padding: 14px 16px;
+  margin: 0 0 26px;
+  font-size: .95rem;
+}
+.notice strong { display: block; margin-bottom: 2px; }
+
+/* ---- Definition / info rows ---- */
+.rows { border-top: 1px solid #ccc; }
+.rows > div {
+  display: flex;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid #ccc;
+}
+.rows dt, .rows .k {
+  flex: 0 0 190px;
+  font-weight: bold;
+  font-family: Georgia, serif;
+}
+.rows dd, .rows .v { margin: 0; flex: 1; }
+
+/* ---- Numbered steps ---- */
+ol.steps { padding-left: 0; list-style: none; counter-reset: s; }
+ol.steps li {
+  counter-increment: s;
+  border-bottom: 1px solid #ccc;
+  padding: 14px 0 14px 52px;
+  position: relative;
+}
+ol.steps li::before {
+  content: counter(s);
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-weight: bold;
+}
+ol.steps h3 { margin: 0 0 .2em; }
+
+/* ---- Plain lists ---- */
+ul.plain { margin: 0 0 1em; padding-left: 1.3em; }
+ul.plain li { margin: .3em 0; }
+
+/* ---- Table ---- */
+table.gov {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 24px;
+  font-size: .95rem;
+}
+table.gov th, table.gov td {
+  border: 1px solid #999;
+  padding: 9px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+table.gov th { background: #ececec; font-family: Georgia, serif; }
+
+/* ---- FAQ ---- */
+.faq dt { font-weight: bold; margin-top: 18px; font-family: Georgia, serif; }
+.faq dd { margin: 4px 0 0; }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block;
+  background: #1b1b1b;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #000;
+  font-size: .95rem;
+}
+.btn:hover { background: #000; color: #fff; }
+.btn--secondary { background: #fff; color: #000; }
+.btn--secondary:hover { background: #ececec; color: #000; }
+
+/* ---- Form ---- */
+form.gov label { display: block; font-weight: bold; margin: 16px 0 4px; }
+form.gov input, form.gov textarea, form.gov select {
+  width: 100%;
+  max-width: 460px;
+  padding: 9px 10px;
+  border: 1px solid #666;
+  font-size: 1rem;
+  font-family: inherit;
+}
+form.gov .req { color: #a00; }
+form.gov button { margin-top: 22px; }
+.formnote { margin-top: 14px; font-size: .9rem; }
+
+/* ---- Two column ---- */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+.cols > section { border: 1px solid #ccc; padding: 18px; }
+
+/* ---- Footer ---- */
+.gov-footer {
+  border-top: 4px solid #000;
+  background: #f0f0f0;
+  margin-top: 40px;
+}
+.gov-footer__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 26px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-size: .9rem;
+}
+.gov-footer h4 { font-size: .95rem; margin: 0 0 8px; }
+.gov-footer a { display: block; color: #00339c; text-decoration: none; padding: 3px 0; }
+.gov-footer__legal {
+  border-top: 1px solid #ccc;
+  font-size: .8rem;
+  color: #555;
+}
+.gov-footer__legal .gov-footer__inner { padding-top: 14px; padding-bottom: 22px; }
+
+@media (max-width: 700px) {
+  .cols { grid-template-columns: 1fr; }
+  .masthead__contact { margin-left: 0; text-align: left; width: 100%; }
+  .rows > div { flex-direction: column; gap: 2px; }
+  .rows dt, .rows .k { flex-basis: auto; }
+}
