@@ -93,6 +93,34 @@ a:hover { color: #072f5c; }
   color: #000000 !important;
 }
 
+/* =====================================================================
+   Header: shorter bar + gets more opaque on scroll
+   (scroll JS already toggles .nav.is-stuck at >20px)
+   ===================================================================== */
+
+/* Shorter header — the 150px logo was making it very tall */
+.nav__logo { height: 46px !important; }
+.nav { padding: 0.3rem 0 !important; }
+
+/* At the top: translucent white so the page shows through faintly */
+.nav {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(8px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(120%) !important;
+  border-bottom: 1px solid transparent !important;
+}
+
+/* Scrolled: more opaque, tighter, with a soft shadow */
+.nav.is-stuck {
+  background: rgba(255, 255, 255, 0.97) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 6px 22px rgba(16, 42, 79, 0.08) !important;
+  padding: 0.15rem 0 !important;
+}
+.nav.is-stuck .nav__logo { height: 40px !important; }
+
 /* Gradient-clipped headline text (was clipped to a light gradient -> invisible on white) */
 [style*="background-clip"], .grad-text, [class*="grad"] {
   -webkit-text-fill-color: initial !important;
