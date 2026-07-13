@@ -125,6 +125,13 @@ a:hover { color: #072f5c; }
 .nav__logo { height: 160px !important; }
 .nav.is-stuck .nav__logo { height: 140px !important; }
 
+/* FAQ as one continuous list (no separate boxes) */
+.faq-list { max-width: 820px; margin: 0 auto; }
+.faq-item { padding: 1.5rem 0; border-bottom: 1px solid rgba(16,42,79,0.14); }
+.faq-item:first-child { border-top: 1px solid rgba(16,42,79,0.14); }
+.faq-item h3 { color: #0f1728 !important; font-size: 1.18rem; margin: 0 0 0.5rem; }
+.faq-item p { color: #38455f !important; margin: 0; line-height: 1.6; }
+
 /* Gradient-clipped headline text (was clipped to a light gradient -> invisible on white) */
 [style*="background-clip"], .grad-text, [class*="grad"] {
   -webkit-text-fill-color: initial !important;
