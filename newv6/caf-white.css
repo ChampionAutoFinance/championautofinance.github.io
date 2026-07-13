@@ -1,0 +1,122 @@
+/* =====================================================================
+   Champion Auto Finance — v6 "white" override (light theme)
+   Flips the navy-glass dark theme to a clean white one by redefining the
+   palette tokens, removes the background image, and keeps text readable
+   (dark ink body, blue links, red/blue accents). Loaded LAST.
+   ===================================================================== */
+
+:root {
+  /* grounds: navy scale -> white / light greys */
+  --navy-950: #ffffff;
+  --navy-900: #ffffff;
+  --navy-800: #eef3fa;
+  --navy-700: #e2eaf5;
+
+  /* text: light ink -> dark ink */
+  --ink:      #0f1728;
+  --ink-dim:  #38455f;
+  --ink-faint:#5c6a84;
+
+  /* surfaces / borders */
+  --glass:    #ffffff;
+  --glass-2:  #f3f7fc;
+  --line:     rgba(16,42,79,0.16);
+  --panel:    #ffffff;
+
+  /* softer shadows/glows for a light ground */
+  --shadow:   0 20px 50px -30px rgba(16,42,79,0.28);
+  --glow:     0 0 0 1px rgba(43,137,255,0.28), 0 14px 34px -14px rgba(43,137,255,0.30);
+
+  /* accents kept: --blue #2b89ff, --red #e3142d, --chrome #cfe0f5 remain */
+}
+
+/* Remove the background image; white ground */
+html, body {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: var(--ink) !important;
+}
+
+/* Hide the dark intro/loader overlay entirely */
+.intro { display: none !important; }
+
+/* Default readable text everywhere */
+body, p, li, span, small, strong, em, td, th, dd, dt, figcaption, label, blockquote,
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ink);
+}
+.muted, .subtle, [class*="dim"], [class*="faint"], .eyebrow, .kicker { color: var(--ink-dim) !important; }
+
+/* Links = readable brand blue (blue-soft is too light on white) */
+a { color: #0b4f93; }
+a:hover { color: #072f5c; }
+
+/* Any element that pulled a dark navy background directly -> light */
+[style*="background:#0"], [style*="background: #0"],
+[style*="background-color:#0"], [style*="background-color: #0"],
+[style*="background:#1"], [style*="background: #1"] {
+  background: #ffffff !important;
+  color: var(--ink) !important;
+}
+
+/* Hardcoded dark gradient panels seen in home2.css / pages.css -> light card */
+.stat, .card, .panel, .glass, [class*="card"], [class*="panel"], [class*="tile"],
+[class*="feature"], [class*="step"], [class*="duo__card"] {
+  color: var(--ink);
+}
+
+/* Keep white text ONLY where it sits on a colored fill (buttons/badges) */
+.btn, .button, [class*="btn"], .badge, .pill, .cta,
+.btn *, [class*="btn"] * {
+  color: #ffffff !important;
+}
+/* ...but outline/ghost buttons on white need dark/blue text */
+.btn--ghost, .btn--outline, [class*="ghost"], [class*="outline"],
+.btn--ghost *, [class*="ghost"] * {
+  color: #0b4f93 !important;
+  background: transparent !important;
+}
+
+/* Gradient-clipped headline text (was clipped to a light gradient -> invisible on white) */
+[style*="background-clip"], .grad-text, [class*="grad"] {
+  -webkit-text-fill-color: initial !important;
+  color: var(--ink) !important;
+  background: none !important;
+}
+
+/* Accent headlines that used a light blue->white->red clip -> solid readable blue */
+.hero__title-accent,
+.subhero__title .accent,
+.hero-content h2 {
+  -webkit-text-fill-color: #1466c9 !important;
+  color: #1466c9 !important;
+  background: none !important;
+}
+
+/* Stat / step numbers that were clipped to a light gradient -> solid blue */
+.stat__num, .statband__num, .step__num {
+  -webkit-text-fill-color: #1466c9 !important;
+  color: #1466c9 !important;
+  background: none !important;
+}
+
+/* Alternating "band" sections -> light tint (were dark translucent navy) */
+.section--band { background: #eef3fa !important; }
+
+/* Form inputs were dark navy -> white so typed text is readable */
+input, textarea, select,
+.cta__form input, .form-card input, .form-card textarea, .form-card select {
+  background: #ffffff !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; }
+
+/* Footer -> white with dark text (was dark translucent navy) */
+.footer, .site-footer, footer {
+  background: #ffffff !important;
+  border-top: 1px solid var(--line) !important;
+}
+.footer *, .site-footer * { color: var(--ink-dim) !important; }
+.footer a:hover, .site-footer a:hover { color: #0b4f93 !important; }
+.footer__logo, .site-footer img { filter: none !important; }
