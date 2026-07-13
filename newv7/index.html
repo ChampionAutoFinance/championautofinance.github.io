@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="pages.css" />
-  <link rel="stylesheet" href="caf-white.css?v=11" />
+  <link rel="stylesheet" href="caf-white.css?v=12" />
 </head>
 <body>
   <!-- Page load intro -->
@@ -169,18 +169,17 @@
       </div>
     </section>
 
-    <!-- CTA BANNER -->
-    <section class="cta" id="contact">
-      <div class="cta__inner reveal" data-reveal>
-        <h2>Ready for a Champion deal?</h2>
-        <p>Tell us about the deal and we’ll coordinate a clear, transparent approval — from application to funding.</p>
-        <form class="cta__form" id="leadForm" novalidate>
-          <input type="text" name="name" placeholder="Full name" required aria-label="Full name" />
-          <input type="email" name="email" placeholder="Email address" required aria-label="Email address" />
-          <input type="tel" name="phone" placeholder="Phone" aria-label="Phone" />
-          <button type="submit" class="btn btn--primary btn--lg">Get Approved <span class="btn__arrow">→</span></button>
-        </form>
-        <p class="cta__note" id="formNote" aria-live="polite"></p>
+    <!-- MEET CHAMP -->
+    <section class="section champ" id="contact">
+      <div class="champ__media reveal" data-reveal>
+        <div class="champ__glow"></div>
+        <img src="assets/mascot.png" alt="Champ, the Champion Auto Finance bulldog mascot" class="champ__img" />
+      </div>
+      <div class="champ__copy reveal" data-reveal data-delay="120">
+        <span class="eyebrow">Meet Champ</span>
+        <h2 class="section__title">A name you call back</h2>
+        <p class="section__lead">Behind the shield is a team that answers the phone. Real people, straight answers, and a standard we’re named after. That’s the Champion difference.</p>
+        <a href="contact.html" class="btn btn--primary btn--lg">Talk to a Human <span class="btn__arrow">→</span></a>
       </div>
     </section>
   </main>
