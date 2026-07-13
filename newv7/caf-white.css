@@ -121,37 +121,9 @@ a:hover { color: #072f5c; }
 }
 .nav.is-stuck .nav__logo { height: 40px !important; }
 
-/* =====================================================================
-   Header restyle: light-blue bar, red rules top & bottom, big logo,
-   white nav text
-   ===================================================================== */
-.nav {
-  background: #e9eef8 !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border-top: 3px solid #e3142d !important;
-  border-bottom: 3px solid #e3142d !important;
-  box-shadow: none !important;
-  padding: 0.15rem 0 !important;
-}
-.nav.is-stuck {
-  background: #e9eef8 !important;
-  border-top: 3px solid #e3142d !important;
-  border-bottom: 3px solid #e3142d !important;
-  box-shadow: 0 6px 18px rgba(16,42,79,0.10) !important;
-}
-
-/* Logo ~3.5x bigger */
+/* Header reverted to the plain white bar; only the larger logo is kept */
 .nav__logo { height: 160px !important; }
 .nav.is-stuck .nav__logo { height: 140px !important; }
-
-/* Nav words navy (readable on the light-blue header) */
-.nav .nav__links a, .nav__links a,
-.nav__phone, .nav__email,
-.nav__contact, .nav__contact * {
-  color: #0f1728 !important;
-}
-.nav .nav__links a:hover { color: #0b4f93 !important; }
 
 /* Gradient-clipped headline text (was clipped to a light gradient -> invisible on white) */
 [style*="background-clip"], .grad-text, [class*="grad"] {
