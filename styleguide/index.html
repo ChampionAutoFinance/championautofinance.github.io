@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Champion — Banking Brand &amp; UI Style Guide</title>
+<meta name="description" content="Champion Auto Finance brand & UI style guide — color tokens, typography, components, and accessibility.">
+<style>
+  :root {
+    /* Core brand tokens — lifted verbatim from championautofinance.com */
+    --navy-950:#03070f; --navy-900:#061327; --navy-800:#0a1c38; --navy-700:#102a4f;
+    --blue:#2b89ff; --blue-soft:#5aa6ff;
+    --red:#e3142d; --red-soft:#ff4d63;
+    --chrome:#cfe0f5;
+    --ink:#eaf2ff; --ink-dim:#9fb3cf; --ink-faint:#6f86a6;
+    --line:rgba(120,160,220,0.14);
+    --glass:rgba(18,38,72,0.42); --glass-2:rgba(12,26,52,0.6);
+    --radius:20px; --radius-lg:28px; --radius-sm:12px;
+    --shadow:0 30px 80px -30px rgba(0,0,0,0.65);
+    --glow:0 0 0 1px rgba(43,137,255,0.4), 0 18px 50px -12px rgba(43,137,255,0.55);
+    --pos:#35d29a; --pos-dim:rgba(53,210,154,0.14);
+    --warn:#f5b544; --warn-dim:rgba(245,181,68,0.14);
+    --neg:var(--red-soft);
+    --font-display:'Sora','Sora Fallback',system-ui,-apple-system,sans-serif;
+    --font-body:'Inter','Inter Fallback',system-ui,-apple-system,sans-serif;
+    --max:1080px;
+    color-scheme:dark;
+  }
+
+  * { box-sizing:border-box; }
+  body {
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--ink);
+    line-height:1.6;
+    background:
+      radial-gradient(60vw 60vw at 12% -10%, rgba(43,137,255,0.16), transparent 60%),
+      radial-gradient(50vw 50vw at 100% 8%, rgba(227,20,45,0.10), transparent 60%),
+      radial-gradient(55vw 55vw at 40% 110%, rgba(90,166,255,0.12), transparent 60%),
+      var(--navy-950);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.08; letter-spacing:-0.02em; text-wrap:balance; margin:0; }
+  p { margin:0; }
+  a { color:var(--blue-soft); }
+  ::selection { background:rgba(43,137,255,0.35); }
+
+  .wrap { max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  .eyebrow {
+    font-family:var(--font-body); font-size:.72rem; font-weight:600;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--blue-soft);
+    display:inline-flex; align-items:center; gap:.5rem;
+  }
+  .eyebrow::before { content:""; width:22px; height:1px; background:var(--blue); display:inline-block; }
+
+  .cover { padding:96px 0 64px; border-bottom:1px solid var(--line); position:relative; }
+  .cover__mark {
+    width:56px; height:56px; border-radius:16px; display:grid; place-items:center;
+    background:linear-gradient(150deg, var(--blue), var(--navy-700));
+    box-shadow:var(--glow); font-family:var(--font-display); font-weight:800; font-size:1.5rem;
+    color:#fff; margin-bottom:28px; letter-spacing:-0.04em;
+  }
+  .cover h1 { font-size:clamp(2.4rem,6vw,4rem); font-weight:800; }
+  .cover h1 .accent { color:var(--blue); }
+  .cover__sub { font-size:1.18rem; color:var(--ink-dim); max-width:60ch; margin-top:20px; }
+  .cover__meta { display:flex; flex-wrap:wrap; gap:10px 12px; margin-top:32px; }
+  .chip {
+    font-size:.78rem; color:var(--ink-dim); border:1px solid var(--line);
+    background:var(--glass); border-radius:100px; padding:7px 15px; backdrop-filter:blur(8px);
+  }
+
+  section.block { padding:72px 0; border-bottom:1px solid var(--line); }
+  .block__head { max-width:64ch; margin-bottom:40px; }
+  .block__head h2 { font-size:clamp(1.7rem,3.4vw,2.4rem); font-weight:700; margin:14px 0 12px; }
+  .block__head p { color:var(--ink-dim); font-size:1.05rem; }
+  .num { color:var(--ink-faint); font-variant-numeric:tabular-nums; }
+
+  .rec {
+    border:1px solid var(--line); border-left:3px solid var(--blue);
+    background:linear-gradient(120deg, rgba(43,137,255,0.10), transparent 70%);
+    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+    padding:18px 22px; margin:24px 0; box-shadow:var(--shadow);
+  }
+  .rec .eyebrow { color:var(--blue); }
+  .rec p { margin-top:8px; color:var(--ink); font-size:.98rem; }
+  .rec strong { color:#fff; }
+
+  .swatches { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:16px; }
+  .sw { border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden; background:var(--glass); }
+  .sw__chip { height:96px; display:flex; align-items:flex-end; padding:12px; }
+  .sw__body { padding:12px 14px 16px; }
+  .sw__name { font-family:var(--font-display); font-weight:600; font-size:.95rem; }
+  .sw__hex { font-size:.82rem; color:var(--ink-dim); font-variant-numeric:tabular-nums; letter-spacing:.02em; margin-top:2px; }
+  .sw__role { font-size:.78rem; color:var(--ink-faint); margin-top:8px; }
+  .sw__chip .onchip { font-size:.72rem; font-weight:600; opacity:.9; }
+
+  .tablewrap { overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--glass); }
+  table { border-collapse:collapse; width:100%; min-width:520px; font-size:.92rem; }
+  th,td { text-align:left; padding:13px 16px; border-bottom:1px solid var(--line); }
+  th { font-family:var(--font-display); font-weight:600; color:var(--ink-dim); font-size:.8rem; letter-spacing:.04em; text-transform:uppercase; }
+  tbody tr:last-child td { border-bottom:none; }
+  td.ratio { font-variant-numeric:tabular-nums; font-weight:600; }
+  .pass { color:var(--pos); } .fail { color:var(--red-soft); } .warnc { color:var(--warn); }
+  .tag { font-size:.7rem; padding:2px 8px; border-radius:100px; font-weight:600; letter-spacing:.03em; }
+  .tag--pass { background:var(--pos-dim); color:var(--pos); } .tag--fail { background:rgba(227,20,45,0.16); color:var(--red-soft); }
+
+  .specimen { display:grid; gap:8px; padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:var(--glass); box-shadow:var(--shadow); }
+  .specimen .row { display:flex; align-items:baseline; gap:20px; border-bottom:1px dashed var(--line); padding-bottom:14px; }
+  .specimen .row:last-child { border-bottom:none; padding-bottom:0; }
+  .specimen .meta { font-size:.72rem; color:var(--ink-faint); font-variant-numeric:tabular-nums; min-width:120px; }
+  .t-display-xl { font-family:var(--font-display); font-weight:800; font-size:3rem; letter-spacing:-0.03em; }
+  .t-display { font-family:var(--font-display); font-weight:700; font-size:2rem; letter-spacing:-0.02em; }
+  .t-h3 { font-family:var(--font-display); font-weight:600; font-size:1.35rem; }
+  .t-body { font-family:var(--font-body); font-size:1rem; color:var(--ink-dim); }
+  .t-caption { font-family:var(--font-body); font-size:.8rem; color:var(--ink-faint); }
+  .t-num { font-variant-numeric:tabular-nums; font-family:var(--font-display); font-weight:700; }
+
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:720px){ .grid2 { grid-template-columns:1fr; } }
+
+  .demo { border:1px solid var(--line); border-radius:var(--radius); background:var(--glass); padding:28px; box-shadow:var(--shadow); }
+  .demo__label { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:18px; }
+  .demorow { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+
+  .btn { font-family:var(--font-display); font-weight:600; font-size:.95rem; border-radius:100px;
+    padding:13px 26px; border:1px solid transparent; cursor:pointer; display:inline-flex; align-items:center; gap:.5rem;
+    transition:transform .18s cubic-bezier(.22,1,.36,1), box-shadow .18s, background .18s; }
+  .btn:focus-visible { outline:2px solid var(--blue-soft); outline-offset:3px; }
+  .btn--primary { background:var(--blue); color:#02122e; box-shadow:var(--glow); }
+  .btn--primary:hover { transform:translateY(-2px); }
+  .btn--ghost { background:transparent; color:var(--ink); border-color:var(--line); backdrop-filter:blur(6px); }
+  .btn--ghost:hover { border-color:var(--blue); transform:translateY(-2px); }
+  .btn--danger { background:transparent; color:var(--red-soft); border-color:rgba(255,77,99,.5); }
+  .btn--danger:hover { background:rgba(227,20,45,.14); }
+  .btn .arrow { transition:transform .18s; }
+  .btn--primary:hover .arrow { transform:translateX(3px); }
+
+  .pill { font-size:.78rem; font-weight:600; padding:5px 13px; border-radius:100px; display:inline-flex; align-items:center; gap:7px; border:1px solid transparent; }
+  .pill::before { content:""; width:7px; height:7px; border-radius:50%; background:currentColor; }
+  .pill--pos { color:var(--pos); background:var(--pos-dim); border-color:rgba(53,210,154,.3); }
+  .pill--warn { color:var(--warn); background:var(--warn-dim); border-color:rgba(245,181,68,.3); }
+  .pill--neg { color:var(--red-soft); background:rgba(227,20,45,.14); border-color:rgba(255,77,99,.3); }
+  .pill--info { color:var(--blue-soft); background:rgba(43,137,255,.14); border-color:rgba(43,137,255,.3); }
+
+  .field { display:flex; flex-direction:column; gap:7px; max-width:340px; }
+  .field label { font-size:.82rem; color:var(--ink-dim); font-weight:500; }
+  .field input {
+    background:var(--glass-2); border:1px solid var(--line); border-radius:var(--radius-sm);
+    padding:13px 15px; color:var(--ink); font-family:var(--font-body); font-size:1rem; transition:border .18s, box-shadow .18s;
+  }
+  .field input::placeholder { color:var(--ink-faint); }
+  .field input:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(43,137,255,.22); }
+  .field .hint { font-size:.76rem; color:var(--ink-faint); }
+
+  .alert { border-radius:var(--radius-sm); padding:16px 18px; display:flex; gap:14px; border:1px solid var(--line); font-size:.92rem; }
+  .alert__icon { width:24px; height:24px; border-radius:50%; flex:0 0 auto; display:grid; place-items:center; font-weight:700; font-size:.85rem; }
+  .alert--warn { background:var(--warn-dim); border-color:rgba(245,181,68,.35); }
+  .alert--warn .alert__icon { background:var(--warn); color:#231600; }
+  .alert--pos { background:var(--pos-dim); border-color:rgba(53,210,154,.35); }
+  .alert--pos .alert__icon { background:var(--pos); color:#00251a; }
+
+  .ledger td.amt { font-variant-numeric:tabular-nums; text-align:right; font-weight:600; }
+  .ledger .up { color:var(--pos); } .ledger .down { color:var(--red-soft); }
+  .ledger td.acct { font-variant-numeric:tabular-nums; letter-spacing:.05em; color:var(--ink-dim); }
+
+  .balcard { border:1px solid var(--line); border-radius:var(--radius); padding:24px; background:linear-gradient(155deg, var(--glass), var(--glass-2)); box-shadow:var(--shadow); max-width:340px; }
+  .balcard__k { font-size:.78rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.12em; }
+  .balcard__v { font-family:var(--font-display); font-weight:800; font-size:2.6rem; letter-spacing:-0.03em; margin:6px 0 4px; font-variant-numeric:tabular-nums; }
+  .balcard__row { display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); font-size:.85rem; color:var(--ink-dim); }
+
+  ul.clean { list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+  ul.clean li { display:flex; gap:12px; color:var(--ink-dim); font-size:.98rem; }
+  ul.clean li::before { content:""; width:6px; height:6px; margin-top:9px; border-radius:50%; background:var(--blue); flex:0 0 auto; box-shadow:0 0 10px var(--blue); }
+  ul.clean li strong { color:var(--ink); font-weight:600; }
+
+  .do-dont { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:720px){ .do-dont { grid-template-columns:1fr; } }
+  .dd { border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px; background:var(--glass); }
+  .dd h4 { font-size:.95rem; display:flex; align-items:center; gap:9px; margin-bottom:12px; }
+  .dd--do h4 { color:var(--pos); } .dd--dont h4 { color:var(--red-soft); }
+  .dd ul { margin:0; padding-left:18px; color:var(--ink-dim); font-size:.9rem; display:grid; gap:8px; }
+
+  footer { padding:56px 0 80px; color:var(--ink-faint); font-size:.85rem; }
+  footer .disc { max-width:70ch; line-height:1.7; }
+
+  @media (prefers-reduced-motion:reduce){ * { transition:none !important; } }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <div class="cover__mark">C</div>
+    <div class="eyebrow">Brand &amp; UI System · v1.0</div>
+    <h1 style="margin-top:16px;">Champion Bank<br><span class="accent">Style Guide</span></h1>
+    <p class="cover__sub">A banking identity built on the Champion Auto Finance visual language — deep navy, electric blue, and chrome-glass surfaces — adapted for the trust, clarity, and compliance a chartered financial institution demands.</p>
+    <div class="cover__meta">
+      <span class="chip">Deep navy foundation</span>
+      <span class="chip">Sora + Inter</span>
+      <span class="chip">Glass surfaces</span>
+      <span class="chip">WCAG 2.1 AA target</span>
+      <span class="chip">Dark-first, single theme</span>
+    </div>
+  </div>
+</div>
+
+<!-- 01 FOUNDATION -->
+<section class="block"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">01</span> &nbsp;Foundation</div>
+    <h2>From auto finance to a banking institution</h2>
+    <p>The Champion look — a dark navy world lit by electric blue, with red as a spark of energy — reads as confident and modern. A bank keeps that confidence but shifts the emphasis: <strong>legibility over spectacle, restraint over energy, and disclosure as a first-class design element.</strong></p>
+  </div>
+  <ul class="clean" style="max-width:70ch;">
+    <li><strong>Keep the navy-glass core.</strong> The deep-navy ground and frosted panels already signal security and premium seriousness — ideal for banking.</li>
+    <li><strong>Demote red from decoration to signal.</strong> On the marketing site red is brand energy. In a banking product, red must mean one thing: money out, errors, or destructive actions. Never style a neutral button or heading red.</li>
+    <li><strong>Add the money vocabulary the auto site lacks:</strong> semantic positive/negative colors, tabular figures, and status pills for transaction and application states.</li>
+    <li><strong>Hold a WCAG 2.1 AA floor.</strong> Financial services carry real ADA/accessibility exposure; every text-on-surface pairing in this guide is contrast-checked below.</li>
+  </ul>
+  <div class="rec">
+    <div class="eyebrow">Recommendation</div>
+    <p><strong>Split the brand into two registers.</strong> Use the expressive, high-motion navy-glass treatment for marketing and acquisition pages; use a calmer, denser variant (less glow, tighter spacing, more tabular data) for the authenticated banking app. Same tokens, different intensity.</p>
+  </div>
+</div></section>
+
+<!-- 02 COLOR -->
+<section class="block"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">02</span> &nbsp;Color</div>
+    <h2>Core palette</h2>
+    <p>The exact tokens from championautofinance.com. Navy is the ground and never a text color; ink shades carry all body copy; blue is the single interactive accent.</p>
+  </div>
+
+  <div class="swatches">
+    <div class="sw"><div class="sw__chip" style="background:#03070f;border-bottom:1px solid var(--line)"><span class="onchip" style="color:#eaf2ff">Aa</span></div><div class="sw__body"><div class="sw__name">Navy 950</div><div class="sw__hex">#03070F</div><div class="sw__role">App background · ground</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#061327"><span class="onchip" style="color:#eaf2ff">Aa</span></div><div class="sw__body"><div class="sw__name">Navy 900</div><div class="sw__hex">#061327</div><div class="sw__role">Raised sections</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#0a1c38"><span class="onchip" style="color:#eaf2ff">Aa</span></div><div class="sw__body"><div class="sw__name">Navy 800</div><div class="sw__hex">#0A1C38</div><div class="sw__role">Cards · panels</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#102a4f"><span class="onchip" style="color:#eaf2ff">Aa</span></div><div class="sw__body"><div class="sw__name">Navy 700</div><div class="sw__hex">#102A4F</div><div class="sw__role">Borders · hovers</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#2b89ff"><span class="onchip" style="color:#02122e">Aa</span></div><div class="sw__body"><div class="sw__name">Electric Blue</div><div class="sw__hex">#2B89FF</div><div class="sw__role">Primary action · links · focus</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#5aa6ff"><span class="onchip" style="color:#02122e">Aa</span></div><div class="sw__body"><div class="sw__name">Blue Soft</div><div class="sw__hex">#5AA6FF</div><div class="sw__role">Link text on dark · hover</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#e3142d"><span class="onchip" style="color:#fff">Aa</span></div><div class="sw__body"><div class="sw__name">Champion Red</div><div class="sw__hex">#E3142D</div><div class="sw__role">Alerts · large only ⚠</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#ff4d63"><span class="onchip" style="color:#2a0006">Aa</span></div><div class="sw__body"><div class="sw__name">Red Soft</div><div class="sw__hex">#FF4D63</div><div class="sw__role">Error text · negative amounts</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#cfe0f5"><span class="onchip" style="color:#02122e">Aa</span></div><div class="sw__body"><div class="sw__name">Chrome</div><div class="sw__hex">#CFE0F5</div><div class="sw__role">Highlights · icon strokes</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#eaf2ff"><span class="onchip" style="color:#02122e">Aa</span></div><div class="sw__body"><div class="sw__name">Ink</div><div class="sw__hex">#EAF2FF</div><div class="sw__role">Primary text</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#9fb3cf"><span class="onchip" style="color:#02122e">Aa</span></div><div class="sw__body"><div class="sw__name">Ink Dim</div><div class="sw__hex">#9FB3CF</div><div class="sw__role">Secondary text</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#6f86a6"><span class="onchip" style="color:#02122e">Aa</span></div><div class="sw__body"><div class="sw__name">Ink Faint</div><div class="sw__hex">#6F86A6</div><div class="sw__role">Captions · disclosures</div></div></div>
+  </div>
+
+  <div class="rec">
+    <div class="eyebrow">Recommendation · accessibility</div>
+    <p>Every pairing below is measured against <strong>Navy 950</strong>. Champion Red as <em>text</em> fails AA at normal sizes — use <strong>Red Soft</strong> for any error copy under ~24px, and reserve pure Champion Red for large numerals, icons, and fills.</p>
+  </div>
+
+  <div class="tablewrap" style="margin-top:22px;">
+    <table>
+      <thead><tr><th>Foreground on Navy 950</th><th>Contrast ratio</th><th>Normal text</th><th>Use for</th></tr></thead>
+      <tbody>
+        <tr><td>Ink #EAF2FF</td><td class="ratio pass">17.9 : 1</td><td><span class="tag tag--pass">AAA</span></td><td>Body, headings</td></tr>
+        <tr><td>Ink Dim #9FB3CF</td><td class="ratio pass">9.4 : 1</td><td><span class="tag tag--pass">AAA</span></td><td>Secondary copy</td></tr>
+        <tr><td>Blue Soft #5AA6FF</td><td class="ratio pass">7.9 : 1</td><td><span class="tag tag--pass">AAA</span></td><td>Links on dark</td></tr>
+        <tr><td>Electric Blue #2B89FF</td><td class="ratio pass">5.9 : 1</td><td><span class="tag tag--pass">AA</span></td><td>Accents, focus rings</td></tr>
+        <tr><td>Red Soft #FF4D63</td><td class="ratio pass">6.2 : 1</td><td><span class="tag tag--pass">AA</span></td><td>Error &amp; negative text</td></tr>
+        <tr><td>Ink Faint #6F86A6</td><td class="ratio warnc">5.4 : 1</td><td><span class="tag tag--pass">AA</span></td><td>Captions (≥14px)</td></tr>
+        <tr><td>Champion Red #E3142D</td><td class="ratio fail">4.2 : 1</td><td><span class="tag tag--fail">Fails AA</span></td><td>Large / fills only</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- 03 SEMANTIC -->
+<section class="block"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">03</span> &nbsp;Semantic color</div>
+    <h2>The money vocabulary to add</h2>
+    <p>The auto-finance palette has no green and no amber — a banking product cannot express balances, gains, pending states, or warnings without them. These two additions complete the system and are tuned to sit naturally beside the existing blues.</p>
+  </div>
+  <div class="swatches" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr));">
+    <div class="sw"><div class="sw__chip" style="background:#35d29a"><span class="onchip" style="color:#00251a">Aa</span></div><div class="sw__body"><div class="sw__name">Positive</div><div class="sw__hex">#35D29A</div><div class="sw__role">Credits · gains · approved · balances up</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#f5b544"><span class="onchip" style="color:#231600">Aa</span></div><div class="sw__body"><div class="sw__name">Warning</div><div class="sw__hex">#F5B544</div><div class="sw__role">Pending · attention · review needed</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:#ff4d63"><span class="onchip" style="color:#2a0006">Aa</span></div><div class="sw__body"><div class="sw__name">Negative</div><div class="sw__hex">#FF4D63</div><div class="sw__role">Debits · declines · errors (reuses Red Soft)</div></div></div>
+  </div>
+  <div class="rec">
+    <div class="eyebrow">Recommendation</div>
+    <p><strong>Never encode meaning by color alone.</strong> ~1 in 12 men has a red/green deficiency — a bank cannot let color be the only difference between a credit and a debit. Always pair the hue with a sign (+ / −), an icon, or a text label. The ledger and pills below follow this rule.</p>
+  </div>
+</div></section>
+
+<!-- 04 TYPOGRAPHY -->
+<section class="block"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">04</span> &nbsp;Typography</div>
+    <h2>Sora &amp; Inter</h2>
+    <p><strong>Sora</strong> (display) carries headings, balances, and brand moments with a tight <span style="font-variant-numeric:tabular-nums">−0.02em</span> tracking. <strong>Inter</strong> (body) handles everything read in volume — forms, tables, disclosures — where its high legibility and true tabular figures matter most. <em>(Specimens render in a system fallback here; ship the real webfonts self-hosted.)</em></p>
+  </div>
+  <div class="specimen">
+    <div class="row"><span class="meta">Display XL · Sora 800</span><span class="t-display-xl">Bank with confidence</span></div>
+    <div class="row"><span class="meta">Display · Sora 700</span><span class="t-display">Your money, in focus</span></div>
+    <div class="row"><span class="meta">Heading · Sora 600</span><span class="t-h3">Account activity</span></div>
+    <div class="row"><span class="meta">Body · Inter 400</span><span class="t-body">Clear, transparent terms from application to funding — set in Inter for sustained reading.</span></div>
+    <div class="row"><span class="meta">Caption · Inter 400</span><span class="t-caption">Member FDIC. Rates and terms subject to approval.</span></div>
+    <div class="row"><span class="meta">Figures · tabular</span><span class="t-num" style="font-size:1.6rem;">$ 12,480.55 &nbsp;·&nbsp; 4.29% APR</span></div>
+  </div>
+  <div class="rec">
+    <div class="eyebrow">Recommendation · figures</div>
+    <p>Apply <strong>font-variant-numeric: tabular-nums</strong> to every balance, rate, account number, and table column so digits align vertically and don't jitter as values update. This is the single highest-impact typographic rule for a banking UI.</p>
+  </div>
+</div></section>
+
+<!-- 05 COMPONENTS -->
+<section class="block"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">05</span> &nbsp;Components</div>
+    <h2>Core UI patterns</h2>
+    <p>Built from the shared tokens: pill buttons with a blue glow, frosted-glass cards, status pills, and focus-visible states throughout.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="demo">
+      <div class="demo__label">Buttons</div>
+      <div class="demorow">
+        <button class="btn btn--primary">Open account <span class="arrow">→</span></button>
+        <button class="btn btn--ghost">View details</button>
+        <button class="btn btn--danger">Close account</button>
+      </div>
+      <p style="color:var(--ink-faint);font-size:.82rem;margin-top:16px;">One primary action per view. Destructive actions use the red outline — never a solid red fill, which reads as a primary CTA.</p>
+    </div>
+
+    <div class="demo">
+      <div class="demo__label">Status pills</div>
+      <div class="demorow">
+        <span class="pill pill--pos">Approved</span>
+        <span class="pill pill--warn">Pending review</span>
+        <span class="pill pill--neg">Declined</span>
+        <span class="pill pill--info">Funding</span>
+      </div>
+      <p style="color:var(--ink-faint);font-size:.82rem;margin-top:16px;">A dot plus a label — state never relies on color alone. Map these to deal/application status across the product.</p>
+    </div>
+
+    <div class="demo">
+      <div class="demo__label">Input · focus &amp; validation</div>
+      <div class="field">
+        <label for="acct">Routing number</label>
+        <input id="acct" inputmode="numeric" placeholder="021000021" value="021000021">
+        <span class="hint">Focus ring uses Electric Blue at 3px, 22% opacity.</span>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo__label">Balance card</div>
+      <div class="balcard" style="max-width:none;">
+        <div class="balcard__k">Available balance</div>
+        <div class="balcard__v">$12,480.55</div>
+        <span class="pill pill--pos">+ $340.00 today</span>
+        <div class="balcard__row"><span>Champion Checking · 4821</span><span>APY 4.29%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo" style="margin-top:20px;">
+    <div class="demo__label">Alerts &amp; disclosures</div>
+    <div style="display:grid;gap:12px;">
+      <div class="alert alert--pos"><span class="alert__icon">✓</span><div><strong>Transfer scheduled.</strong> $500.00 will move to Savings ·9930 on Jul&nbsp;12. You can cancel before 8:00&nbsp;PM ET.</div></div>
+      <div class="alert alert--warn"><span class="alert__icon">!</span><div><strong>Verify your identity to continue.</strong> Upload a government-issued ID so we can finish opening your account.</div></div>
+    </div>
+  </div>
+
+  <div class="demo" style="margin-top:20px;">
+    <div class="demo__label">Ledger · transaction table</div>
+    <div class="tablewrap" style="background:transparent;border:none;">
+      <table class="ledger" style="min-width:480px;">
+        <thead><tr><th>Date</th><th>Description</th><th>Account</th><th style="text-align:right">Amount</th></tr></thead>
+        <tbody>
+          <tr><td>Jul 09</td><td>Payroll — Champion LLC</td><td class="acct">••4821</td><td class="amt up">+ $2,140.00</td></tr>
+          <tr><td>Jul 08</td><td>Auto loan payment</td><td class="acct">••4821</td><td class="amt down">− $389.14</td></tr>
+          <tr><td>Jul 07</td><td>Transfer to Savings</td><td class="acct">••9930</td><td class="amt down">− $500.00</td></tr>
+          <tr><td>Jul 06</td><td>Interest earned</td><td class="acct">••9930</td><td class="amt up">+ $12.83</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></section>
+
+<!-- 06 TRUST -->
+<section class="block"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">06</span> &nbsp;Trust &amp; compliance</div>
+    <h2>Disclosure is a design element</h2>
+    <p>A bank's credibility lives in the fine print, the security cues, and the regulatory marks. Give them a considered, consistent treatment instead of an afterthought footer.</p>
+  </div>
+  <div class="do-dont">
+    <div class="dd dd--do">
+      <h4>◆ Do</h4>
+      <ul>
+        <li>Set disclosures in Ink Faint at ≥14px, 1.7 line-height — legible, not buried.</li>
+        <li>Give FDIC/NCUA, Equal Housing, and licensing marks a fixed footer lockup.</li>
+        <li>Show a lock glyph + "Secured" only on genuinely encrypted screens.</li>
+        <li>State APR, APY, and fee terms adjacent to the number they qualify.</li>
+      </ul>
+    </div>
+    <div class="dd dd--dont">
+      <h4>✕ Don't</h4>
+      <ul>
+        <li>Shrink legal text below 12px or drop it under 4.5:1 contrast.</li>
+        <li>Use Champion Red to "warn" on routine disclosures — it cries wolf.</li>
+        <li>Imply guaranteed approval; Champion is a partner, not the lender.</li>
+        <li>Animate or auto-dismiss anything a regulator expects the user to read.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rec">
+    <div class="eyebrow">Recommendation</div>
+    <p><strong>Build a "disclosure" text style into the type scale</strong> (Inter, 14px, Ink Faint, 1.7lh, max ~70ch) and a reusable regulatory footer lockup. Standardizing these once keeps every product surface audit-ready and on-brand.</p>
+  </div>
+</div></section>
+
+<!-- 07 MOTION & A11Y -->
+<section class="block"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">07</span> &nbsp;Motion &amp; accessibility</div>
+    <h2>Calm, honest motion</h2>
+  </div>
+  <ul class="clean" style="max-width:72ch;">
+    <li><strong>Ease with intent.</strong> Reuse the site's <span style="font-variant-numeric:tabular-nums">cubic-bezier(.22,1,.36,1)</span> at 150–200ms for hovers and transitions. Save the explosive logo intro for marketing only — keep the app quiet.</li>
+    <li><strong>Honor prefers-reduced-motion.</strong> Disable non-essential transitions and never animate balances or amounts changing (it undermines trust in the figure).</li>
+    <li><strong>Visible focus everywhere.</strong> A 2px Electric Blue focus ring at 3px offset on every interactive element — banking users lean heavily on keyboards and screen readers.</li>
+    <li><strong>Tap targets ≥44px</strong> and body text ≥16px, so account holders across all ages and abilities can transact confidently.</li>
+  </ul>
+</div></section>
+
+<!-- 08 VOICE -->
+<section class="block" style="border-bottom:none;"><div class="wrap">
+  <div class="block__head">
+    <div class="eyebrow"><span class="num">08</span> &nbsp;Voice &amp; tone</div>
+    <h2>Plain, direct, human</h2>
+    <p>Champion's marketing voice is "real people, straight answers." In banking that becomes: precise about money, warm about people, never hype.</p>
+  </div>
+  <div class="do-dont">
+    <div class="dd dd--do">
+      <h4>◆ Say</h4>
+      <ul>
+        <li>"Your transfer is scheduled for Jul 12."</li>
+        <li>"We couldn't verify that routing number. Check the 9 digits and try again."</li>
+        <li>"No monthly fee. No minimum balance."</li>
+      </ul>
+    </div>
+    <div class="dd dd--dont">
+      <h4>✕ Avoid</h4>
+      <ul>
+        <li>"Oops! Something went wrong."</li>
+        <li>"Unlock exclusive wealth-building opportunities!"</li>
+        <li>Jargon like "ACH origination window" in customer-facing copy.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p style="color:var(--ink-dim);font-family:var(--font-display);font-weight:600;margin-bottom:10px;">Champion Bank · Brand &amp; UI Style Guide v1.0</p>
+  <p class="disc">Visual system derived from championautofinance.com (deep navy, electric blue, champion red, chrome-glass). This guide is an internal design reference. Champion Auto Finance is a licensed financing partner, not a lender; any product built on this system must reflect real charter, membership (FDIC/NCUA), and regulatory status before launch. Contrast ratios computed against Navy&nbsp;950 (#03070F) per WCAG 2.1.</p>
+</div></footer>
+
+</body>
+</html>
