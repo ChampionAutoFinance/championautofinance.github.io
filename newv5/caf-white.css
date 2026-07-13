@@ -1,0 +1,125 @@
+/* =====================================================================
+   Champion Auto Finance — v5 "white" override
+   Removes background images, whitens all surfaces, and forces readable
+   text: dark navy body/headings, blue links, red buttons.
+   Loaded LAST so it wins the cascade.
+   ===================================================================== */
+
+/* 1. Kill every background image (hero space art, section photos, etc.) */
+*,
+*::before,
+*::after {
+  background-image: none !important;
+}
+
+/* 2. White grounds everywhere that used to be dark/navy */
+html,
+body,
+.page,
+#main,
+main,
+.main-content,
+.content,
+header,
+footer,
+nav,
+section,
+article,
+aside,
+.vc_row,
+.wpb_row,
+.wpb_column,
+.vc_column-inner,
+.vc_row-full-width,
+.container,
+.container-fluid,
+.row,
+.site-header,
+.site-footer,
+[class*="section"],
+[class*="hero"],
+[class*="banner"],
+[class*="-bg"] {
+  background-color: #ffffff !important;
+}
+
+/* 3. Readable text — default to dark navy ink */
+body,
+p, li, dd, dt, td, th, span, div, label, blockquote, small, strong, em, figcaption,
+h1, h2, h3, h4, h5, h6,
+.vc_custom_heading, .wpb_text_column, .kd-heading {
+  color: #0f1728 !important;
+}
+
+/* 4. Links = brand blue */
+a,
+a span,
+nav a,
+header a,
+.menu a {
+  color: #0b4f93 !important;
+}
+a:hover,
+nav a:hover,
+header a:hover {
+  color: #072f5c !important;
+}
+
+/* 5. Buttons / CTAs = brand red with white label */
+.btn,
+button,
+input[type="submit"],
+input[type="button"],
+.vc_btn3,
+.vc_general,
+a.button,
+[class*="button"],
+.btn *,
+button *,
+.vc_btn3 * {
+  background-color: #d71920 !important;
+  color: #ffffff !important;
+  border-color: #d71920 !important;
+  text-shadow: none !important;
+}
+.btn:hover,
+button:hover,
+.vc_btn3:hover,
+[class*="button"]:hover {
+  background-color: #b9151b !important;
+  color: #ffffff !important;
+}
+
+/* 6. Nav links should stay readable on the now-white header */
+.site-header, header, nav, .menu { border-bottom: 1px solid #e3e9f2 !important; }
+
+/* 6b. Main menu — beat the theme's white-on-dark rule with ID specificity */
+#menu-main-menu li a,
+#menu-main-menu > li > a,
+ul.navbar-nav li a,
+.navbar-nav > li > a {
+  color: #0f1728 !important;
+}
+#menu-main-menu li a:hover,
+#menu-main-menu li.current-menu-item > a,
+#menu-main-menu li.active > a {
+  color: #0b4f93 !important;
+}
+
+/* 7. Any leftover inline-styled dark blocks -> white with dark text */
+[style*="background-image"],
+[style*="background:#0"],
+[style*="background: #0"],
+[style*="background-color:#0"],
+[style*="background-color: #0"] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  color: #0f1728 !important;
+}
+
+/* 8. Checkmark / feature rows that were white text on the hero */
+[class*="feature"] span,
+[class*="check"] span,
+.wpb_text_column * {
+  color: #0f1728 !important;
+}
