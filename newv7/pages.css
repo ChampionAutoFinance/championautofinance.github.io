@@ -191,3 +191,36 @@
   .qual { grid-template-columns: 1fr; }
   .form-grid--2 { grid-template-columns: 1fr; }
 }
+
+/* ===== Lease Buyouts: pitch block + compare cards (v7) ===== */
+.kicker { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+.kicker::before { content: ""; width: 26px; height: 2px; background: var(--red); flex: none; }
+.duo--pitch { align-items: center; gap: 3rem; }
+.pitch h2 { font-size: clamp(2.1rem, 3.4vw, 2.8rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.015em; margin: 1.2rem 0 1.3rem; color: #10254a; }
+.pitch > p { color: #56688a; font-size: 1.06rem; line-height: 1.75; margin-bottom: 1.8rem; max-width: 40rem; }
+.checks { list-style: none; display: grid; gap: 1.05rem; margin-bottom: 2.3rem; }
+.checks li { position: relative; padding-left: 2rem; color: #223452; font-weight: 500; font-size: 1.02rem; }
+.checks li::before { content: "✓"; position: absolute; left: 0; top: 0; color: #1e77e0; font-weight: 800; font-size: 1.05rem; }
+.btn--red { background: var(--red); padding: 1em 1.9em; font-weight: 700; box-shadow: 0 14px 34px -14px rgba(227,20,45,0.5); }
+.btn--red:hover { transform: translateY(-3px); box-shadow: 0 22px 55px -14px rgba(227,20,45,0.6); }
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; max-width: 1000px; margin: 0 auto; }
+.compare__card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem 2.2rem; box-shadow: var(--shadow); }
+.compare__card--win { border-color: rgba(43,137,255,0.45); box-shadow: 0 20px 50px -25px rgba(43,137,255,0.35); }
+.compare__pill { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.45em 1em; border-radius: 999px; margin-bottom: 1.3rem; }
+.compare__pill--old { color: #c0392b; background: rgba(227,20,45,0.1); }
+.compare__pill--new { color: #1466c9; background: rgba(43,137,255,0.12); }
+.xlist, .oklist { list-style: none; display: grid; gap: 0.95rem; }
+.xlist li, .oklist li { position: relative; padding-left: 1.8rem; color: var(--ink-dim); }
+.xlist li::before { content: "✕"; position: absolute; left: 0; top: 0; color: var(--red); font-weight: 800; }
+.oklist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: #1a9e50; font-weight: 800; }
+@media (max-width: 860px) { .compare, .duo--pitch { grid-template-columns: 1fr; } }
+
+/* ===== Four steps, zero trips (how-it-works) ===== */
+.steps4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; max-width: 1160px; margin: 0 auto; }
+.step4 { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.7rem 1.6rem; }
+.step4 .step4__num { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #10254a; color: #ffffff; font-weight: 800; font-family: var(--font-display); margin-bottom: 1rem; }
+.step4 h3 { font-size: 1.12rem; color: #10254a; margin-bottom: 0.5rem; }
+.step4 p { color: #56688a; font-size: 0.98rem; line-height: 1.6; margin: 0; }
+@media (max-width: 1000px) { .steps4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .steps4 { grid-template-columns: 1fr; } }

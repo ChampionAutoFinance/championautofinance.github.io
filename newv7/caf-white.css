@@ -195,3 +195,8 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
   .hero h1 { font-size: 2.15rem !important; line-height: 1.1 !important; }
   .hero__content { order: 1 !important; }
 }
+
+/* ---- Lease Buyouts additions: navy kicker, red button keeps white text ---- */
+.kicker { color: #123a6d !important; }
+.btn--red { background: var(--red) !important; }
+.btn--red, .btn--red * { color: #ffffff !important; }
