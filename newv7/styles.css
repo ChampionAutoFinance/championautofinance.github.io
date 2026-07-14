@@ -351,7 +351,7 @@ img { max-width: 100%; display: block; }
 .footer__logo { height: 46px; margin-bottom: 1rem; }
 .footer__brand p { color: var(--ink-dim); max-width: 26rem; }
 .footer__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.footer__cols h4 { font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1rem; }
+.footer__cols h3 { font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1rem; }
 .footer__cols a { display: block; color: var(--ink-dim); padding: 0.3rem 0; transition: color 0.3s, transform 0.3s; }
 .footer__cols a:hover { color: var(--ink); transform: translateX(4px); }
 .footer__legal { max-width: var(--max); margin: 2.5rem auto 0; padding-top: 1.8rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }

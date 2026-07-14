@@ -175,3 +175,23 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 .footer *, .site-footer * { color: var(--ink-dim) !important; }
 .footer a:hover, .site-footer a:hover { color: #0b4f93 !important; }
 .footer__logo, .site-footer img { filter: none !important; }
+
+/* ---- Mobile: slim header + content-first hero (phones) ---- */
+@media (max-width: 720px) {
+  /* header: the 160px logo made it eat ~1/4 of the screen */
+  .nav__logo,
+  .nav.is-stuck .nav__logo { height: 44px !important; }
+  .nav { padding: 6px 0 !important; }
+
+  /* hero: drop the decorative emblem, kill the 100vh gap, size the headline to fit */
+  .hero__visual { display: none !important; }
+  .hero {
+    grid-template-columns: 1fr !important;
+    min-height: 0 !important;
+    align-items: start !important;
+    text-align: left !important;
+    padding: 88px 1.25rem 44px !important;
+  }
+  .hero h1 { font-size: 2.15rem !important; line-height: 1.1 !important; }
+  .hero__content { order: 1 !important; }
+}
