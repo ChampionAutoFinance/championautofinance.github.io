@@ -202,7 +202,17 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 .caf-cat-list{list-style:none;padding-left:0}
 .caf-cat-list li{margin:0 0 1em}
 .caf-cat-list .caf-count{color:#777;font-size:.9em}
+.caf-search{margin:0 0 2em}
+.caf-search input{width:100%;max-width:480px;padding:12px 16px;border:1px solid #ccc;border-radius:4px;font-family:inherit;font-size:1em}
+#caf-search-count{margin:.75em 0;color:#555}
 </style>
+<div class="caf-search">
+<input type="search" id="caf-search-input" placeholder="Search all 1436 articles&hellip;" aria-label="Search articles" autocomplete="off">
+<p id="caf-search-count" hidden></p>
+<ul id="caf-search-results" class="caf-cols" hidden></ul>
+</div>
+<script src="search-index.js" defer></script>
+<script src="search.js" defer></script>
 <p><a href="./">&larr; All articles</a></p>
 <p>Brand-by-brand and model-by-model guides to financing a lease buyout, published by <a href="https://championautofinance.com/">Champion Auto Finance</a>. Start with the <a href="https://championautofinance.com/lease-buyout-financing/">lease buyout financing</a> overview.</p>
 <ul class="caf-cols">
@@ -230,7 +240,7 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 <li><a href="https://championautofinance.com/buick-lease-buyout/">Buick Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/cadillac-escalade-lease-buyout/">Cadillac Escalade Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/cadillac-lease-buyout/">Cadillac Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/cadillac-xt5-lease-buyout/">Cadillac Xt5 Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/cadillac-xt5-lease-buyout/">Cadillac XT5 Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/can-i-finance-my-lease-buyout/">Can I Finance My Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/chevy-blazer-lease-buyout/">Chevy Blazer Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/chevy-equinox-lease-buyout/">Chevy Equinox Lease Buyout</a></li>
@@ -261,8 +271,8 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 <li><a href="https://championautofinance.com/gmc-lease-buyout/">GMC Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/gmc-sierra-lease-buyout/">GMC Sierra Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/gmc-terrain-lease-buyout/">GMC Terrain Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/genesis-gv70-lease-buyout/">Genesis Gv70 Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/genesis-gv80-lease-buyout/">Genesis Gv80 Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/genesis-gv70-lease-buyout/">Genesis GV70 Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/genesis-gv80-lease-buyout/">Genesis GV80 Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/genesis-lease-buyout/">Genesis Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/global-lending-services-lease-buyout/">Global Lending Services Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/honda-accord-lease-buyout/">Honda Accord Lease Buyout</a></li>
@@ -297,11 +307,11 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 <li><a href="https://championautofinance.com/land-rover-defender-lease-buyout/">Land Rover Defender Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/land-rover-lease-buyout/">Land Rover Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/lease-assumption-vs-lease-buyout/">Lease Assumption vs. Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/lexus-es-lease-buyout/">Lexus Es Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/lexus-es-lease-buyout/">Lexus ES Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/lexus-lease-buyout/">Lexus Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/lexus-nx-lease-buyout/">Lexus Nx Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/lexus-rx-lease-buyout/">Lexus Rx Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/lexus-ux-lease-buyout/">Lexus Ux Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/lexus-nx-lease-buyout/">Lexus NX Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/lexus-rx-lease-buyout/">Lexus RX Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/lexus-ux-lease-buyout/">Lexus UX Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/lincoln-aviator-lease-buyout/">Lincoln Aviator Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/lincoln-lease-buyout/">Lincoln Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/lucid-lease-buyout/">Lucid Lease Buyout</a></li>
@@ -310,10 +320,10 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 <li><a href="https://championautofinance.com/mazda-cx-5-lease-buyout/">Mazda CX-5 Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/mazda-lease-buyout/">Mazda Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/mazda3-lease-buyout/">Mazda3 Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/mercedes-c-class-lease-buyout/">Mercedes C Class Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/mercedes-e-class-lease-buyout/">Mercedes E Class Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/mercedes-eqe-lease-buyout/">Mercedes Eqe Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/mercedes-eqs-lease-buyout/">Mercedes Eqs Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/mercedes-c-class-lease-buyout/">Mercedes C-Class Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/mercedes-e-class-lease-buyout/">Mercedes E-Class Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/mercedes-eqe-lease-buyout/">Mercedes EQE Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/mercedes-eqs-lease-buyout/">Mercedes EQS Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/mercedes-gla-lease-buyout/">Mercedes GLA Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/mercedes-glb-lease-buyout/">Mercedes GLB Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/mercedes-glc-lease-buyout/">Mercedes GLC Lease Buyout</a></li>
@@ -354,7 +364,7 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 <li><a href="https://championautofinance.com/toyota-sienna-lease-buyout/">Toyota Sienna Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/toyota-tacoma-lease-buyout/">Toyota Tacoma Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/toyota-tundra-lease-buyout/">Toyota Tundra Lease Buyout</a></li>
-<li><a href="https://championautofinance.com/volkswagen-id4-lease-buyout/">Volkswagen Id4 Lease Buyout</a></li>
+<li><a href="https://championautofinance.com/volkswagen-id4-lease-buyout/">Volkswagen ID.4 Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/volkswagen-lease-buyout/">Volkswagen Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/volvo-lease-buyout/">Volvo Lease Buyout</a></li>
 <li><a href="https://championautofinance.com/volvo-xc60-lease-buyout/">Volvo XC60 Lease Buyout</a></li>

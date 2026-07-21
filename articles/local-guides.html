@@ -202,7 +202,17 @@ h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-backg
 .caf-cat-list{list-style:none;padding-left:0}
 .caf-cat-list li{margin:0 0 1em}
 .caf-cat-list .caf-count{color:#777;font-size:.9em}
+.caf-search{margin:0 0 2em}
+.caf-search input{width:100%;max-width:480px;padding:12px 16px;border:1px solid #ccc;border-radius:4px;font-family:inherit;font-size:1em}
+#caf-search-count{margin:.75em 0;color:#555}
 </style>
+<div class="caf-search">
+<input type="search" id="caf-search-input" placeholder="Search all 1436 articles&hellip;" aria-label="Search articles" autocomplete="off">
+<p id="caf-search-count" hidden></p>
+<ul id="caf-search-results" class="caf-cols" hidden></ul>
+</div>
+<script src="search-index.js" defer></script>
+<script src="search.js" defer></script>
 <p><a href="./">&larr; All articles</a></p>
 <p>More local guides from <a href="https://championautofinance.com/">Champion Auto Finance</a> for drivers in New Jersey, New York, and Pennsylvania.</p>
 <h2>Get Out of a Car Lease</h2>
