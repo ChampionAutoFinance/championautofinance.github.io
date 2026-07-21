@@ -28,4 +28,44 @@
     <loc>https://championautofinance.github.io/privacy-policy/</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/lease-buyout-brands.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/lease-buyout-lenders.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/lease-buyout-guides.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/lease-buyouts-by-city.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/auto-refinance-by-city.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/car-payment-help-by-city.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/local-guides.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/dealer-financing.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://championautofinance.github.io/articles/auto-finance-guides.html</loc>
+    <priority>0.6</priority>
+  </url>
 </urlset>
