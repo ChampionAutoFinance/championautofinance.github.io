@@ -1,0 +1,257 @@
+.caf-site-nav,
+.caf-site-nav * {
+  box-sizing: border-box;
+}
+
+.caf-site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  width: 100%;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid rgba(16, 42, 79, 0.16);
+  box-shadow: 0 6px 22px rgba(16, 42, 79, 0.08);
+  font-family: Inter, Montserrat, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.caf-site-nav__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  min-height: 104px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(14px, 1.7vw, 24px);
+}
+
+.caf-site-nav__brand {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.caf-site-nav__logo {
+  display: block;
+  width: 240px;
+  height: auto;
+  max-width: none;
+  margin: 0;
+}
+
+.caf-site-nav__links {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 1.7vw, 28px);
+  margin: 0;
+  padding: 0;
+}
+
+.caf-site-nav__links a,
+.caf-site-nav__phone,
+.caf-site-nav__email,
+.caf-site-nav__cta {
+  white-space: nowrap;
+  text-decoration: none !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+.caf-site-nav__links a {
+  position: relative;
+  padding: 8px 0;
+  color: #0b4f93 !important;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.caf-site-nav__links a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: #2b89ff;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.caf-site-nav__links a:hover::after,
+.caf-site-nav__links a.is-active::after {
+  transform: scaleX(1);
+}
+
+.caf-site-nav__actions,
+.caf-site-nav__contact {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.caf-site-nav__actions {
+  gap: 18px;
+}
+
+.caf-site-nav__contact {
+  gap: 14px;
+  line-height: 1;
+}
+
+.caf-site-nav__phone {
+  color: #0b4f93 !important;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.caf-site-nav__email {
+  color: #0b4f93 !important;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.caf-site-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  color: #07101f !important;
+  background: linear-gradient(135deg, #499dff, #1a6ee0);
+  border-radius: 999px;
+  box-shadow: 0 14px 34px -16px rgba(43, 137, 255, 0.65);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.caf-site-nav__toggle {
+  display: none;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 9px;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.caf-site-nav__toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: #0b4f93;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.caf-site-nav.is-open .caf-site-nav__toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.caf-site-nav.is-open .caf-site-nav__toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.caf-site-nav.is-open .caf-site-nav__toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.caf-site-nav :where(a, button):focus-visible {
+  outline: 3px solid #2b89ff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1320px) {
+  .caf-site-nav__inner {
+    gap: 14px;
+    padding-inline: 16px;
+  }
+
+  .caf-site-nav__links {
+    gap: 16px;
+  }
+
+  .caf-site-nav__links a {
+    font-size: 13px;
+  }
+
+  .caf-site-nav__email {
+    display: none;
+  }
+}
+
+@media (max-width: 1040px) {
+  .caf-site-nav__contact {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .caf-site-nav__inner {
+    min-height: 78px;
+  }
+
+  .caf-site-nav__logo {
+    width: 210px;
+  }
+
+  .caf-site-nav__links,
+  .caf-site-nav__cta {
+    display: none;
+  }
+
+  .caf-site-nav__toggle {
+    display: flex;
+  }
+
+  .caf-site-nav.is-open .caf-site-nav__links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 14px 20px 18px;
+    background: rgba(255, 255, 255, 0.99);
+    border-bottom: 1px solid rgba(16, 42, 79, 0.16);
+    box-shadow: 0 14px 30px rgba(16, 42, 79, 0.1);
+  }
+
+  .caf-site-nav.is-open .caf-site-nav__links a {
+    display: block;
+    padding: 11px 0;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 520px) {
+  .caf-site-nav__inner {
+    min-height: 68px;
+  }
+
+  .caf-site-nav__logo {
+    width: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caf-site-nav *,
+  .caf-site-nav *::before,
+  .caf-site-nav *::after {
+    transition: none !important;
+  }
+}
